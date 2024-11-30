@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg bg-primary " data-bs-theme="dark" >
+    <div class="container-fluid nav d-flex justify-content-between align-items-center">
+      <a class="navbar-brand" href="{% url 'home'%}">Gas Utility Services</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if user.is_authenticated %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'track_requests' %}">Track Requests</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+          {% else %}
+            {% if request.path == '/register/' %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Login</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+                </li>
+            {% endif %}
+          {% endif %}
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  

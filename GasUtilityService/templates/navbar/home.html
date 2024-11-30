@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="container mt-2">
+    <div class="text-center">
+        <h1 class="display-4 text-primary">Welcome to Gas Utility Services</h1>
+        <p class="lead">Your reliable partner for all your gas utility needs.</p>
+        <p>We provide a range of services to ensure your gas supply is safe, efficient, and reliable. Whether you need to track your service requests or submit a new one, we've got you covered!</p>
+        
+        {% if user.is_authenticated %}
+            <a href="{% url 'track_requests' %}" class="btn btn-success bg-primary btn-lg">Track My Requests</a>
+        {% else %}
+            <div class="mt-4">
+                <a href="{% url 'home' %}" class="btn btn-primary btn-lg">Login</a>
+                <a href="{% url 'register' %}" class="btn btn-secondary btn-lg">Register</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <hr class="my-4 bg-primary">
+
+    <div class="row mt-2">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Submit a Service Request</h5>
+                    <p class="card-text">Need assistance? Submit a service request and our team will get back to you promptly.</p>
+                    {% comment %} <a href="{% url 'customer_request' %}" class="btn btn-primary">Submit Request</a> {% endcomment %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Modify Your Requests</h5>
+                    <p class="card-text">Need to change your service request details?</p>
+                    {% comment %} <a href="" class="btn btn-success bg-primary">Modify Request</a> {% endcomment %}
+                </div>
+            </div>
+            {% comment %} request_id=service_request.id {% endcomment %}
+        </div>
+        <div class="col-md-4 ">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Customer Support</h5>
+                    <p class="card-text">Have questions? Our customer support is here to help you.</p>
+                    {% comment %} <a href="" class="btn btn-success bg-primary">Contact Support</a> {% endcomment %}
+                </div>
+            </div>
+            {% comment %} {% url 'modify_request' %} {% endcomment %}
+        </div>
+    </div>
+</div>
+{% comment %} {% include "customer_service/track_requests.html" %} {% endcomment %}
+{% else %}
+
+    <div class="col-md-6 offset-md-3 ">
+        <br>
+        <br>
+        <h1 class='text-primary'>Login</h1>
+        <form method="POST" action="{% url 'home' %}">
+            {% csrf_token %}
+            <form>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input type="text" name='username' placeholder='username' class="form-control" 
+                    aria-describedby="emailHelp" id="exampleInputEmail1" required >
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" name='password' placeholder='password' 
+                    class="form-control" id="exampleInputPassword1" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </form>
+    </div>
+
+{% endif %}
+
+{% endblock content %}

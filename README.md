@@ -76,6 +76,11 @@ The settings.py file contains all the configuration settings for the Django proj
     ├── manage.py                    # Command-line utility for administrative tasks
     └── requirements.txt             # Python dependencies
 
+## Super user - admin
+username-aditya
+password-Pass@123
+
+
 ## Usage
 - Users can register an account and log in to the application.
 - Once logged in, users can submit service requests by filling out the provided form.

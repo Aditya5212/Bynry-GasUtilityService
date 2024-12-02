@@ -77,8 +77,8 @@ The settings.py file contains all the configuration settings for the Django proj
     └── requirements.txt             # Python dependencies
 
 ## Super user - admin
-username-aditya
-password-Pass@123
+- username-aditya
+- password-Pass@123
 
 
 ## Usage
